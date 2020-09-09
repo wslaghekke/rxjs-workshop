@@ -1,0 +1,36 @@
+<div class="d-flex align-items-center">
+    <h1>My Notes</h1>
+    <a class="btn btn-primary ml-auto" routerLink="new">Nieuwe notitie</a>
+</div>
+<ng-container *ngIf="notes; else loading">
+    <table class="table table-hover" *ngIf="notes.length > 0; else empty">
+        <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let note of notes">
+            <td>{{ note.title }}</td>
+            <td style="width: 50px">
+                <a class="btn btn-sm btn-link" [routerLink]="['edit', note.id]">
+                    <app-pencil-icon></app-pencil-icon>
+                </a>
+            </td>
+            <td style="width: 50px">
+                <button class="btn btn-sm btn-link" (click)="deleteNote(note)">
+                    <app-trash-icon></app-trash-icon>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #loading>
+    Loading notes...
+</ng-template>
+<ng-template #empty>
+    You dont have any notes yet
+</ng-template>

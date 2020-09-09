@@ -1,0 +1,17 @@
+<h1>Http call demo</h1>
+
+<div class="form-group">
+    <label for="filter">Filter</label>
+    <input id="filter" type="text" [formControl]="inputControl">
+</div>
+
+<button class="btn btn-primary" (click)="shouldLoadData = !shouldLoadData">Toggle http call enabled</button>
+<ng-container *ngIf="shouldLoadData">
+    <h2>Http call result</h2>
+    <code *ngIf="data$|async as data; else loading">
+        {{ data|json }}
+    </code>
+    <ng-template #loading>
+        loading...
+    </ng-template>
+</ng-container>

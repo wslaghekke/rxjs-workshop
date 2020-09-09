@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "inlineTemplate": true,
+          "inlineTemplate": false,
           "inlineStyle": true,
           "style": "scss",
           "skipTests": true
@@ -93,7 +93,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rxjs-workshop:build"
+            "browserTarget": "rxjs-workshop:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
